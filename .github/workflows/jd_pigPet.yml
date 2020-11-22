@@ -1,0 +1,46 @@
+name: 京东金融养猪猪
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '45 */3 * * *'
+  watch:
+    types: started
+  repository_dispatch:
+    types: jd_pigPet
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkout github_lxk0301_jd_scripts
+        uses: actions/checkout@v2
+        with:
+          repository: 18u/github_lxk0301_jd_scripts
+          ref: master
+          path: scripts
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: npm install
+        run: |
+          cd scripts
+          npm install
+      - name: '运行 【京东金融养猪猪】'
+        run: |
+          cd scripts
+          node jd_pigPet.js
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
