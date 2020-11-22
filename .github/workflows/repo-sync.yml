@@ -33,11 +33,11 @@ jobs:
           source_repo: https://github.com/uuz/actions.git
           source_branch: main
           destination_branch: upstream
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT }}
 
       - name: Create pull request
         uses: repo-sync/pull-request@v2
         with:
           source_branch: upstream
           destination_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT }}
