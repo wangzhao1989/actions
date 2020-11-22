@@ -12,17 +12,32 @@ jobs:
     env:
       PAT: ${{ secrets.PAT }}
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
+    if: github.event.repository.owner.id == github.event.sender.id && github.repository != 'uuz/actions'
     steps:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
 
-      - name: sync 
+#       - name: sync 
+#         uses: repo-sync/github-sync@v2
+#         if: env.PAT
+#         with:
+#           source_repo: "https://github.com/uuz/actions.git"
+#           source_branch: "main"
+#           destination_branch: "main"
+#           github_token: ${{ secrets.PAT }}
+
+      - name: Sync repo to branch
         uses: repo-sync/github-sync@v2
-        if: env.PAT
         with:
-          source_repo: "https://github.com/uuz/actions.git"
-          source_branch: "main"
-          destination_branch: "main"
-          github_token: ${{ secrets.PAT }}
+          source_repo: https://github.com/uuz/actions.git
+          source_branch: main
+          destination_branch: upstream
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create pull request
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: upstream
+          destination_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
