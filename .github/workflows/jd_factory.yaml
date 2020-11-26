@@ -43,5 +43,5 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          FACTORY_SHARECODES: ${{ secrets.FACTORY_SHARECODES }}
+          FACTORY_SHARECODES: ${{ secrets.DDFACTORY_SHARECODES }}
           SYNCURL: https://github.com/18u/github_799953468_Quantumult-X/raw/master/Scripts/JD/jd_factory.js
