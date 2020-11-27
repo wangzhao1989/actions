@@ -27,9 +27,8 @@ jobs:
           github_token: ${{ secrets.PAT }}
 
       - name: Merge upstream
-        uses: robotology/gh-action-nightly-merge@v1.3.1
+        uses: tukasz/direct-merge-action@master
         with:
-          stable_branch: 'upstream'
-          development_branch: 'main'
-        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: upstream
+          target-branch: main
