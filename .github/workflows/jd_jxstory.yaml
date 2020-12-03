@@ -1,4 +1,4 @@
-name: jx_story
+name: jd_jxstory
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   watch:
     types: [started]
   repository_dispatch:
-    types: jx_story
+    types: jd_jxstory
 
 jobs:
   build:
@@ -40,7 +40,7 @@ jobs:
       - name: "运行 jx_story"
         run: |
           cd scripts
-          node jx_story.js
+          node jd_jxstory.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
