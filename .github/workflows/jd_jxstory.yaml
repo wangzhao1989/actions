@@ -37,7 +37,7 @@ jobs:
         run: |
           cd scripts
           npm install
-      - name: "运行 jx_story"
+      - name: "运行 jd_jxstory"
         run: |
           cd scripts
           node jd_jxstory.js
