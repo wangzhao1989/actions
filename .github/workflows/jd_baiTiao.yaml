@@ -43,4 +43,4 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          SYNCURL: https://github.com/18u/github_yangtingxiao_QuantumultX/raw/master/scripts/jd/jd_baiTiao.js
+          SYNCURL: https://github.com/fq9/github_yangtingxiao_QuantumultX/raw/master/scripts/jd/jd_baiTiao.js
