@@ -19,7 +19,7 @@ jobs:
       - name: Checkout github_sazs34_MyActions
         uses: actions/checkout@v2
         with:
-          repository: 18u/github_sazs34_MyActions
+          repository: fq9/github_sazs34_MyActions
           ref: master
           path: scripts
       - name: Use Node.js
@@ -43,4 +43,4 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          SYNCURL: https://github.com/18u/github_Sunert_Scripts/raw/master/Task/jingxi.js
+          SYNCURL: https://github.com/fq9/github_Sunert_Scripts/raw/master/Task/jingxi.js
