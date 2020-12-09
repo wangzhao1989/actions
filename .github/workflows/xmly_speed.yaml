@@ -19,7 +19,7 @@ jobs:
       - name: Checkout github_sazs34_MyActions
         uses: actions/checkout@v2
         with:
-          repository: fq9/github_sazs34_MyActions
+          repository: fq3/github_sazs34_MyActions
           ref: master
           path: scripts
 
@@ -47,4 +47,4 @@ jobs:
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          SYNCURL: https://github.com/fq9/github_Zero-S1_xmly_speed/raw/master/xmly_speed.py
+          SYNCURL: https://github.com/fq3/github_Zero-S1_xmly_speed/raw/master/xmly_speed.py
