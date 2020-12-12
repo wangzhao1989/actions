@@ -1,13 +1,13 @@
-name: jx_factory_component_hundun
+name: jx_story_hundun
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/10 * * * *"
+  # schedule:
+  #   - cron: "10 */4 * * *"
   watch:
     types: [started]
   repository_dispatch:
-    types: jx_factory_component_hundun
+    types: jx_story_hundun
 
 jobs:
   build:
@@ -37,11 +37,11 @@ jobs:
         run: |
           cd scripts
           npm install
-      - name: "Run jx_factory_component_hundun"
+      - name: "Run jx_story_hundun"
         run: |
           cd scripts
-          wget -q -O jx_factory_component_hundun.js https://github.com/fq3/github_whyour_hundun/raw/master/quanx/jx_factory_component.js
-          node jx_factory_component_hundun.js
+          wget -q -O jx_story_hundun.js https://github.com/fq3/github_whyour_hundun/raw/master/quanx/jx_story.js
+          node jx_story_hundun.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
@@ -51,4 +51,4 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          SYNCURL: https://github.com/fq3/github_whyour_hundun/raw/master/quanx/jx_factory_component.js
+          SYNCURL: https://github.com/fq3/github_whyour_hundun/raw/master/quanx/jx_story.js
