@@ -29,6 +29,6 @@ jobs:
       - name: Merge upstream
         uses: tukasz/direct-merge-action@master
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
           source-branch: upstream
           target-branch: main
