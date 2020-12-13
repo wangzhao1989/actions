@@ -40,7 +40,7 @@ jobs:
       - name: "运行 jd_jxstory"
         run: |
           cd scripts
-          node jd_jxstory.js
+          node backUp/jd_jxstory.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
