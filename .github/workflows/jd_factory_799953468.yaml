@@ -1,13 +1,13 @@
-name: 京东东东工厂
+name: jd_factory_799953468
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 */3 * * *"
+  # schedule:
+  #   - cron: "0 */3 * * *"
   watch:
     types: [started]
   repository_dispatch:
-    types: jd_factory
+    types: jd_factory_799953468
 
 jobs:
   build:
