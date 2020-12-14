@@ -33,7 +33,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: "Run jd_digital_floor"
-        run: node backUp/jd_digital_floor.js
+        run: node activity/jd_digital_floor.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}

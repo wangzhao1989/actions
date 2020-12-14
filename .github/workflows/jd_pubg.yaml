@@ -2,8 +2,8 @@ name: jd_pubg
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "15 7,16 * * *"
+  # schedule:
+  #   - cron: "15 7,16 * * *"
   watch:
     types: [started]
   repository_dispatch:
@@ -33,7 +33,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: "Run jd_pubg"
-        run: node jd_pubg.js
+        run: node activity/jd_pubg.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}

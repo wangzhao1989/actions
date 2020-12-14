@@ -2,8 +2,8 @@ name: 京东东东小窝
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "11 1,16 * * *"
+  # schedule:
+  #   - cron: "11 1,16 * * *"
   watch:
     types: [started]
   repository_dispatch:

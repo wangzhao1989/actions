@@ -14,14 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id && github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Checkout github_lxk0301_jd_scripts
         uses: actions/checkout@v2
         with:
           repository: fq3/github_lxk0301_jd_scripts
           ref: master
-          path: scripts
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -34,13 +31,9 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
       - name: npm install
-        run: |
-          cd scripts
-          npm install
+        run: npm install
       - name: "运行 jd_jxstory"
-        run: |
-          cd scripts
-          node backUp/jd_jxstory.js
+        run: node activity/jd_jxstory.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
