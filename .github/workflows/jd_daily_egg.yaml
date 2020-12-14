@@ -3,7 +3,7 @@ name: 京东天天提鹅
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '6 * * * *'
   watch:
     types: started
   repository_dispatch:
