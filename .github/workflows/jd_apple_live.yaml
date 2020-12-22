@@ -2,8 +2,8 @@ name: jd_apple_live
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "15 7,16 * * *"
+  # schedule:
+  #   - cron: "15 7,16 * * *"
   watch:
     types: [started]
   repository_dispatch:
@@ -33,7 +33,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: "Run jd_apple_live"
-        run: node jd_apple_live.js
+        run: node activity/jd_apple_live.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
