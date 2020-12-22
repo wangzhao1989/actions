@@ -35,7 +35,7 @@ jobs:
       - name: "Run jd_crazyjoy_piao"
         run: |
           wget -q -O jd_crazyjoy_piao.js https://github.com/uuz/piao/raw/main/scripts/jd_crazyjoy.js
-          node jd_crazyjoy.js
+          node jd_crazyjoy_piao.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
