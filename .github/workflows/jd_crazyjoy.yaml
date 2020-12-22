@@ -1,4 +1,4 @@
-name: jd_crazyjoy
+name: jd_crazyjoy_piao
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   watch:
     types: [started]
   repository_dispatch:
-    types: jd_crazyjoy
+    types: jd_crazyjoy_piao
 
 jobs:
   build:
@@ -32,8 +32,10 @@ jobs:
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
       - name: npm install
         run: npm install
-      - name: "Run jd_crazyjoy"
-        run: node jd_crazyjoy.js
+      - name: "Run jd_crazyjoy_piao"
+        run: |
+          wget -q -O jd_crazyjoy_piao.js https://github.com/uuz/piao/raw/main/scripts/jd_crazyjoy.js
+          node jd_crazyjoy.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
