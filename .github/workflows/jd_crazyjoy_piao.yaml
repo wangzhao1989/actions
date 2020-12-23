@@ -2,8 +2,8 @@ name: jd_crazyjoy_piao
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/30 * * * *"
+  # schedule:
+  #   - cron: "*/30 * * * *"
   watch:
     types: [started]
   repository_dispatch:
