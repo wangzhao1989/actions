@@ -2,8 +2,8 @@ name: jd_jdh
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "15 1,16 * * *"
+  # schedule:
+  #   - cron: "15 1,16 * * *"
   watch:
     types: [started]
   repository_dispatch:
