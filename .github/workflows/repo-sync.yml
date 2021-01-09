@@ -1,0 +1,34 @@
+name: repo-sync
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+  repository_dispatch:
+    types: repo-sync
+jobs:
+  repo-sync:
+    env:
+      PAT: ${{ secrets.PAT }}
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id && github.repository != 'uuz/actions'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Sync repo to branch
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: https://github.com/uuz/actions.git
+          source_branch: main
+          destination_branch: upstream
+          github_token: ${{ secrets.PAT }}
+
+      - name: Merge upstream
+        uses: tukasz/direct-merge-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          source-branch: upstream
+          target-branch: main
