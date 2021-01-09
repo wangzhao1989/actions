@@ -1,0 +1,33 @@
+name: qqread_TNanko
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/10 * * * *'
+  watch:
+    type: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - name: Checkout github_TNanko_Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: fq3/github_TNanko_Scripts
+          ref: master
+
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: 'Install requirements'
+        run: pip install -r ./requirements.txt
+
+      - name: 'Run tasks'
+        run: python3 ./scripts/qq_read.py
+        env:
+            CONFIG: ${{ secrets.CONFIG }}
