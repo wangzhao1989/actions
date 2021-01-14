@@ -16,24 +16,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Checkout github_sazs34_MyActions
-        uses: actions/checkout@v2
         with:
-          repository: fq3/github_sazs34_MyActions
+          repository: fq3/gitee_lxk0301_jd_scripts
           ref: master
-          path: scripts
-      - name: Use Node.js
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
       - name: npm install
+        run: npm install
+      - name: "Run Job"
         run: |
-          cd scripts
-          npm install
-      - name: "运行【京东东东工厂】"
-        run: |
-          cd scripts
-          node onlyOneExecute.js
+          wget -q -O jd_factory_799953468.js https://github.com/fq3/github_799953468_Quantumult-X/raw/master/Scripts/JD/jd_factory.js
+          node jd_factory_799953468.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
