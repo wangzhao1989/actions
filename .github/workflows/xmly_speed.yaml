@@ -1,4 +1,4 @@
-name: 喜马拉雅极速版
+name: xmly_speed
 
 on:
   workflow_dispatch:
@@ -16,12 +16,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Checkout github_sazs34_MyActions
-        uses: actions/checkout@v2
         with:
           repository: fq3/github_sazs34_MyActions
           ref: master
-          path: scripts
 
       - name: Set up Python
         uses: actions/setup-python@v1
@@ -30,11 +27,9 @@ jobs:
 
       - name: Install requirements
         run: |
-          cd scripts
           pip install -r ./requirements.txt
-      - name: 运行【喜马拉雅极速版】
+      - name: Run Job
         run: |
-          cd scripts
           python3 xmly_speed.py
         env:
           XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}

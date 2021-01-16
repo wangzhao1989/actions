@@ -35,7 +35,7 @@ jobs:
         run: |
           cd scripts
           npm install
-      - name: "Run jd_dreamFactory_hundun"
+      - name: "Run Job"
         run: |
           cd scripts
           wget -q -O jd_dreamFactory_hundun.js https://github.com/fq3/github_whyour_hundun/raw/master/quanx/jx_factory.js
