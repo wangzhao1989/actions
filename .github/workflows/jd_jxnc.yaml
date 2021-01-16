@@ -1,13 +1,13 @@
-name: jd_dreamFactory_hundun
+name: jd_jxnc
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "0 1,4,10 * * *" # "0 9,12,18 * * *"
   watch:
     types: [started]
   repository_dispatch:
-    types: jd_dreamFactory_hundun
+    types: jd_jxnc
 
 jobs:
   build:
@@ -19,7 +19,6 @@ jobs:
         with:
           repository: fq3/gitee_lxk0301_jd_scripts
           ref: master
-          path: scripts
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -32,14 +31,13 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
       - name: npm install
+        run: npm install
+      - name: prepare job
         run: |
-          cd scripts
-          npm install
-      - name: "Run Job"
-        run: |
-          cd scripts
-          wget -q -O jd_dreamFactory_hundun.js https://github.com/fq3/github_whyour_hundun/raw/master/quanx/jx_factory.js
-          node jd_dreamFactory_hundun.js
+          rm -rf jdCookie.js
+          wget -q -O jdCookie.js https://github.com/fq3/gitee_lxk0301_jd_scripts/raw/cd33b4f47e77387bace6505167d50912fb4abf33/jdCookie.js
+      - name: 'Run Job'
+        run: node jd_jxnc.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -58,5 +56,5 @@ jobs:
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
           TG_PROXY_HOST: ${{ secrets.TG_PROXY_HOST }}
           TG_PROXY_PORT: ${{ secrets.TG_PROXY_PORT }}
-          DREAM_FACTORY_SHARE_CODES: ${{ secrets.DREAM_FACTORY_SHARE_CODES }}
-          SYNCURL: https://github.com/fq3/github_whyour_hundun/raw/master/quanx/jx_factory.js
+          JXNC_SHARECODES: ${{ secrets.JXNC_SHARECODES }}
+          JXNCTOKENS: ${{ secrets.JXNCTOKENS }}
