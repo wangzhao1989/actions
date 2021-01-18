@@ -42,7 +42,7 @@ jobs:
           # wget -q -O jd_jxcfd_MoPoQAQ.js https://github.com/MoPoQAQ/Script/raw/main/Me/jx_cfd.js
           node jd_jxcfd_MoPoQAQ.js
         env:
-JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
