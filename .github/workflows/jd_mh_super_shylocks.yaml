@@ -1,4 +1,4 @@
-name: jd_mh_shylocks
+name: jd_mh_super_shylocks
 # 超级直播间幸运值抽京豆
 # 一次性活动，运行完30京豆
 
@@ -9,7 +9,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: jd_mh_shylocks
+    types: jd_mh_super_shylocks
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
         run: |
           bash <(wget -qO- https://github.com/uuz/piao/raw/main/prepare.sh)
       - name: 'Run Job'
-        run: node jd_mh.js
+        run: node jd_mh_super.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
