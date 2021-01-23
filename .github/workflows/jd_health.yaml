@@ -2,8 +2,8 @@ name: jd_health
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "15 7,16 * * *"
+  # schedule:
+  #   - cron: "15 7,16 * * *"
   watch:
     types: [started]
   repository_dispatch:
