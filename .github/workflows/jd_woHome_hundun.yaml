@@ -34,8 +34,7 @@ jobs:
         run: npm install
       - name: prepare job
         run: |
-          rm -rf jdCookie.js
-          wget -q -O jdCookie.js https://github.com/fq3/github_LXK9301_jd_scripts/raw/cd33b4f47e77387bace6505167d50912fb4abf33/jdCookie.js
+          bash <(wget -qO- https://github.com/uuz/piao/raw/main/prepare.sh)
       - name: "Run Job"
         run: |
           wget -q -O jd_woHome_hundun.js https://github.com/fq3/github_yangtingxiao_QuantumultX/raw/master/scripts/jd/jd_woHome.js
