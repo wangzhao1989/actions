@@ -5,7 +5,7 @@ name: jd_5g
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 7,16 * * *"
+    - cron: "0 4,10,22,16 * * *"
   watch:
     types: [started]
   repository_dispatch:
