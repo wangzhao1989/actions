@@ -1,14 +1,14 @@
-name: jd_immortal
-# 京东神仙书院
+name: jd_mh_shylocks
+# 盲盒抽京豆
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0,12 * * *' # '0 8 * * *'
+  # schedule:
+  #   - cron: '1 23 * * *' # "1 7 * * *"
   watch:
     types: started
   repository_dispatch:
-    types: jd_immortal
+    types: jd_mh_shylocks
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,8 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: fq3/gitee_lxk0301_jd_scripts
-          ref: master
+          repository: fq3/github_shylocks_Loon
+          ref: main
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -36,7 +36,7 @@ jobs:
         run: |
           bash <(wget -qO- https://github.com/uuz/piao/raw/main/prepare.sh)
       - name: 'Run Job'
-        run: node jd_immortal.js
+        run: node jd_mh.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -55,5 +55,3 @@ jobs:
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
           TG_PROXY_HOST: ${{ secrets.TG_PROXY_HOST }}
           TG_PROXY_PORT: ${{ secrets.TG_PROXY_PORT }}
-          # JD_IMMORTAL_LATLON: ${{ secrets.JD_IMMORTAL_LATLON }}
-          JD_IMMORTAL_LATLON: '{"lat":33.1,"lng":118.1}'

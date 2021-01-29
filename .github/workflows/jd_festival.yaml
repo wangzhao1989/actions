@@ -1,15 +1,16 @@
-name: jd_festival_shylocks
+name: jd_festival
 # 京东手机年终奖
 # 活动时间：2021年1月26日～2021年2月8日
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 9 * * *'
+    - cron: "15 16 * * *"
   watch:
-    types: started
+    types: [started]
   repository_dispatch:
-    types: jd_festival_shylocks
+    types: jd_festival
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,8 +19,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: fq3/github_shylocks_Loon
-          ref: main
+          repository: fq3/gitee_lxk0301_jd_scripts
+          ref: master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -36,7 +37,7 @@ jobs:
       - name: prepare job
         run: |
           bash <(wget -qO- https://github.com/uuz/piao/raw/main/prepare.sh)
-      - name: 'Run Job'
+      - name: "Run Job"
         run: node jd_festival.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}

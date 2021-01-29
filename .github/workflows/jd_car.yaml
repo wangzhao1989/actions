@@ -35,7 +35,7 @@ jobs:
       - name: prepare job
         run: |
           bash <(wget -qO- https://github.com/uuz/piao/raw/main/prepare.sh)
-      - name: "Run jd_car"
+      - name: "Run Job"
         run: node jd_car.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}

@@ -1,14 +1,15 @@
-name: jd_immortal
-# 京东神仙书院
+name: jd_ms
+# 京东秒秒币
+# 活动时间：长期活动
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0,12 * * *' # '0 8 * * *'
+    - cron: '10 11,23 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_immortal
+    types: jd_ms
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,7 +37,7 @@ jobs:
         run: |
           bash <(wget -qO- https://github.com/uuz/piao/raw/main/prepare.sh)
       - name: 'Run Job'
-        run: node jd_immortal.js
+        run: node jd_ms.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -55,5 +56,3 @@ jobs:
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
           TG_PROXY_HOST: ${{ secrets.TG_PROXY_HOST }}
           TG_PROXY_PORT: ${{ secrets.TG_PROXY_PORT }}
-          # JD_IMMORTAL_LATLON: ${{ secrets.JD_IMMORTAL_LATLON }}
-          JD_IMMORTAL_LATLON: '{"lat":33.1,"lng":118.1}'
