@@ -4,7 +4,7 @@ name: jd_nian
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0,1,2 * * *' # '0 8,9,10 * * *'
+    - cron: '0 * * * *' # '0 8,9,10 * * *'
   watch:
     types: started
   repository_dispatch:
