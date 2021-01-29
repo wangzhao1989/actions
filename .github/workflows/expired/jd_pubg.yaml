@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: fq3/github_LXK9301_jd_scripts
+          repository: fq3/gitee_lxk0301_jd_scripts
           ref: master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
