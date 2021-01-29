@@ -3,8 +3,8 @@ name: jd_xxl_gh_shylocks
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '40 * * * *' # "40 * * * *"
+  # schedule:
+  #   - cron: '40 * * * *' # "40 * * * *"
   watch:
     types: started
   repository_dispatch:
