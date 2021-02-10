@@ -1,15 +1,15 @@
-name: jd_global
-# 环球挑战赛
-# 活动时间：2021-02-02 至 2021-02-22
+name: jd_global_mh
+# 京东国际盲盒
+# 活动时间:2021-01-15至2021-02-15
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 1,4,12,13 2-23 2 *" # "0 9,12,20,21 2-22 2 *"
+    - cron: "0 1,4,12,13 2-16 2 *" # "0 9,12,20,21 * * *"
   watch:
     types: [started]
   repository_dispatch:
-    types: jd_global
+    types: jd_global_mh
 
 jobs:
   build:
@@ -38,7 +38,7 @@ jobs:
         run: |
           bash <(wget -qO- https://github.com/uuz/piao/raw/main/prepare.sh)
       - name: "Run Job"
-        run: node jd_global.js
+        run: node jd_global_mh.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
