@@ -1,2 +1,2 @@
 # actions
-Actions hub
+Actions
